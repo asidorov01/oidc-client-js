@@ -89,7 +89,9 @@ export class IFrameWindow {
             e.origin === this._origin &&
             e.source === this._frame.contentWindow
         ) {
-            let url = e.data;
+            // let url = e.data;
+            // DotAlign: Fix for Microsoft Azure compatibility
+            let url = this._frame.contentWindow.location.href;
             if (url) {
                 this._success({ url: url });
             }
